@@ -12,7 +12,7 @@ case, the user home directory is the user that runs Minion backend server.
 Hostname Whitelist and Blacklist
 ================================
 
-As of Minion 0.3 release, Minion will blacklist the following IP addresses from scanning.
+By default, Minion will blacklist the following IP addresses from scanning.
 
 .. code-block:: python
 
@@ -22,7 +22,7 @@ As of Minion 0.3 release, Minion will blacklist the following IP addresses from 
     '192.168.0.0/16',
     '169.254.0.0/16'
 
-You can check the latest list from https://github.com/mozilla/minion-backend/blob/master/minion/backend/utils.py.
+You can check the latest list from https://github.com/Wawki/minion-backend/blob/master/minion/backend/utils.py.
 
 The effect of this is that Minion will refuse to scan any target site whose hostname falls in one of the ranges.
 For example, when Minion resolve the hostname ``localhost`` to ``127.0.0.1``, Minion will abort the scan because
@@ -64,7 +64,7 @@ entirely with our own. So we can omit the whitelist in our example.
 Configure Backend
 =================
 
-Here is the default configuration for the backend server (see https://github.com/mozilla/minion-backend/blob/master/minion/backend/utils.py)
+Here is the default configuration for the backend server (see https://github.com/Wawki/minion-backend/blob/dev/minion/backend/utils.py)
 
 .. code-block:: python
 
@@ -97,15 +97,26 @@ The ``max_time_allowed`` determines the life time of an invitation; by default i
 Configure Frontend
 ==================
 
-The frontend is much simpler.
+The frontend is much simpler (see https://github.com/Wawki/minion-frontend/blob/dev/minion/frontend/utils.py)
 
 .. code-block:: python
 
     {
         'backend-api': {
             'url': 'http://127.0.0.1:8383'
+        },
+        'login_conf': {
+            'login_type': 'persona' # Or 'ldap'
+
+            # These two variables are not needed if you use an authentication with Persona
+            'ldap_uri': 'ldaps://your.ldap.server',
+            'ldap_authorized_groups': ['first_group', 'second_group']
         }
     }
 
 If the backend server is on a different server, then put this configuration in a file called ``frontend.json``
 at either ``/etc/minion`` or ``/home/user/.minion``.
+
+.. note::
+
+    In a production environment, you'll also need to set the key **session-secret** key, it needs to be a secret key . It'll be used to set a Security Session Cookie.

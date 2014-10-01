@@ -12,6 +12,7 @@
 # serve to show the default.
 
 #import mozilla_sphinx_theme
+import sphinx_rtd_theme
 import sys, os
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -95,7 +96,8 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'mozilla'
+#html_theme = 'mozilla'
+html_theme = "sphinx_rtd_theme"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -103,7 +105,8 @@ html_theme = 'mozilla'
 #html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = ["theme/mozilla_sphinx_theme"]
+#html_theme_path = ["theme/mozilla_sphinx_theme"]
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -168,7 +171,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Miniondoc'
+htmlhelp_basename = 'MinionDoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------

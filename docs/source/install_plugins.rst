@@ -14,9 +14,178 @@ To view a list of plugins available to Minion backend, logged in the frontend wi
 The Minion instance this screenshot is take from has custom plugins such as ZAP and WPScan. Plugins that are under
 the namespace ``minion.plugins.basic.*`` comes from the **basic** plugin that is shipped with Minion backend.
 
-In this document, users can learn how to set up the zap plugin and the skipfish plugin.
+In this document, users can learn how to set up some of the existing plugins.
 
-.. _ZAPPlugin:
+NMAP Plugin
+===========
+
+Nmap (Network Mapper) is a security scanner used to discover hosts and servies on a computer network.
+
+Get Nmap
+--------
+
+Nmap is available to download from the Internet. You can get it from the official web site http://nmap.org/download.html
+or if you are on a Ubuntu/Debian server, by getting the last stable version with this command :
+
+.. code-block:: bash
+
+    $ sudo apt-get install nmap
+
+Get minion-nmap-plugin
+----------------------
+
+We need the Python wrapper available to Minion's backend Python environment (so remember to source
+into the appropriate environment if needed).
+
+.. code-block:: bash
+
+    $ git clone https://github.com/Wawki/minion-nmap-plugin.git
+    $ cd minion-nmap-plugin
+    $ python setup.py install
+
+Reload backend and workers
+--------------------------
+
+Finally, reload the backend server and all the workers. Then go to the frontend and check ``Plugins`` under an admin account:
+Nmap should be one of the plugins available to Minion now.
+
+Now, you just need to create a new plan for Nmap. Here is an example of plan :
+
+.. code-block:: json
+
+    [
+        {
+            "configuration": {
+            "version_whitelist": "Apache httpd,nginx",
+            "addresses": [
+                {
+                    "address": "127.0.0.1",
+                    "ports": [ 80, 443 ]
+                }
+            ]
+        },
+        "description": "",
+        "plugin_name": "minion.plugins.nmap.NMAPPlugin"
+        }
+    ]
+
+Where **version_whitelist** is a list of authorized versions (not too wordy) for the services, if another version is found an issue will be raised.
+**adresses** is a list of couple address/ports where **ports** are the (authorized) open ports for the address,
+if a open port is found and is not in the list, an issue will be raised.
+
+Arachni Plugin
+==============
+
+Arachni is an Open Source, feature-full, modular, high-performance Ruby framework aimed towards helping penetration testers
+and admnistrators evaluate the security of web applications.
+
+Get Arachni
+-----------
+
+The Arachni Plugin is based on the current experimental branch of Arachni on Github. So to install it, follow these steps :
+
+.. code-block:: bash
+
+    $ git clone git://github.com/Arachni/arachni.git
+    $ cd arachni
+    $ git checkout experimental
+    $ bundle install # to resolve dev dependencies
+
+Get minion-arachni-plugin
+-------------------------
+
+We need the Python wrapper available to Minion's backend Python environment (so remember to source
+into the appropriate environment if needed).
+
+.. code-block:: bash
+
+    $ git clone https://github.com/Wawki/minion-arachni-plugin.git
+    $ cd minion-arachni-plugin
+    $ python setup.py install
+
+Reload backend and workers
+--------------------------
+
+Finally, reload the backend server and all the workers. Then go to the frontend and check ``Plugins`` under an admin account:
+Nmap should be one of the plugins available to Minion now.
+
+Now, you just need to create a new plan for Arachni. Here are two examples of plan :
+
+A basic plan, with few options :
+
+.. code-block:: json
+
+    [
+        {
+            "configuration": {
+            "version_whitelist": "Apache httpd,nginx",
+            "addresses": [
+                {
+                    "address": "127.0.0.1",
+                    "ports": [ 80, 443 ]
+                }
+            ]
+        },
+        "description": "",
+        "plugin_name": "minion.plugins.nmap.NMAPPlugin"
+        }
+    ]
+
+A plan with all the available options :
+
+SSlyze Plugin
+=============
+
+SSLyze is a Python tool that can analyze the SSL configuration of a server by connection to it.
+It is designed to be fast and comprehensive, and should help organisations and testers identify misconfigurations affecting their SSL servers.
+
+Get SSLyze
+----------
+
+SSLyze is statically linked with OpenSSL. For this reason, the easiest way to run SSLyze is to download
+one the pre-compiled packages available in the GitHub releases section for this project, at https://github.com/iSECPartners/sslyze/releases.
+
+Get minion-sslyze-plugin
+------------------------
+
+We need the Python wrapper available to Minion's backend Python environment (so remember to source
+into the appropriate environment if needed).
+
+.. code-block:: bash
+
+    $ git clone https://github.com/Wawki/minion-sslyze-plugin.git
+    $ cd minion-sslyze-plugin
+    $ python setup.py install
+
+Reload backend and workers
+--------------------------
+
+Finally, reload the backend server and all the workers. Then go to the frontend and check ``Plugins`` under an admin account:
+Nmap should be one of the plugins available to Minion now.
+
+Now, you just need to create a new plan for SSLyze. Here are two examples of plan :
+
+A basic plan, with few options :
+
+.. code-block:: json
+
+    [
+        {
+            "configuration": {
+            "version_whitelist": "Apache httpd,nginx",
+            "addresses": [
+                {
+                    "address": "127.0.0.1",
+                    "ports": [ 80, 443 ]
+                }
+            ]
+        },
+        "description": "",
+        "plugin_name": "minion.plugins.nmap.NMAPPlugin"
+        }
+    ]
+
+A plan with all the available options :
 
 ZAPPlugin
 =========

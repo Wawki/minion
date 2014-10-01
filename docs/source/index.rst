@@ -6,41 +6,33 @@
 Welcome to Minion
 #################
 
-Minion is a security testing framework built by Mozilla to bridge the gap between developers and security testers. To do so, it enables developers to scan their projects using a friendly interface.
+Minion is a security testing framework, his goal is to enable developers and security testers
+to bring web application security into a continuous testing cycle. To do this, both developers
+and testers are given an easy to use dashboard that lists all the sites they need to scan,
+detail scan summary page and detail issue page to explain vulnerability. Instead of learning a new scan tool,
+users can write Minion plugins to call their favorite scan tools, and Minion will spawn
+the tool as a new process, scan the target website, and return the results back to the user.
 
-For more information see https://wiki.mozilla.org/Security/Projects/Minion
+It is a based on Minion, a security testing framework build by Mozilla. For more information see https://wiki.mozilla.org/Security/Projects/Minion
 
-Source code are on Github: see `minion-backend <https://github.com/mozilla/minion-backend>`_ and
-`minion-frontend <https://github.com/mozilla/minion-frontend>`_.
+This documentation is made to present Minion but also how to install it. It's based on
+existing documentation of Minion (see http://minion-yeukhon.readthedocs.org/en/latest ), developed by Mozilla, but updated with added features.
+
+Source code are on Github: see https://github.com/Wawki/minion
 
 .. toctree::
    :maxdepth: 2
    :hidden:
 
+   what_is_minion
    getting_started
    configure_minion
-   install_plugin
+   install_plugins
    using_frontend
-   install_guide
+   install_guide_production
    inside_minion
    developing_plugins
    using_setup_sh
-   contribute_to_minion
- 
-Developers
-==========
-
-We are available on #websectools or on Github.
-
-* Stefan Arentz (st3fan)
-
-* Yeuk Hon Wong (yeukhon)
-
-* Simon Bennetts (psiinon)
-
-* Mark Goodwin (mgoodwin) 
-
-* Matthew Fuller
 
 Indices and tables
 ==================

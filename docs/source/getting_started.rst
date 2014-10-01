@@ -1,10 +1,12 @@
 Getting Started
 ###############
 
-This document shows how to get started with Minion by getting your own Minion installation for the first time.
+This document shows how to get started with Minion by getting your own Minion installation for the first time in a development environment.
+
+To install Minion in a production environment, see :doc:`install_guide_production`
 
 Pre-requisites
-===============
+==============
 
 * Minion has been developed primarily on Ubuntu 12.04 and 13.04 so running Minion on other systems is not a guarantee
 
@@ -32,16 +34,11 @@ Installing Minion
 =================
 
 Minion has two components: minion-backend and minion-frontend. To get both installed, the quick way is
-to use ``setup.sh``. This script resides in a different repository: https://github.com/mozilla/minion.
-
-.. note::
-
-    If you want to set up the backend and the frontend individually (suitable for production),
-    please refer to :ref:`install_backend_label` and :ref:`install_frontend_label`.
+to use ``setup.sh``. This script resides in this repository: https://github.com/Wawki/minion.
 
 .. code-block:: bash
 
-    $ git clone https://github.com/mozilla/minion.git
+    $ git clone https://github.com/Wawki/minion.git
     $ cd minion
     $ ./setup.sh clone
     $ ./setup.sh develop
@@ -54,8 +51,7 @@ the backend and frontend (this is not the best practice, but for the purpose of 
 ``develop`` command will then source into this virtualenv and run ``python setup.py develop`` on the backend
 and the frontend to get all the dependencies fulfill. 
 
-There is also ``./setup.sh install`` which performs ``python setup.py install``. This is better for production. To learn
-more about the usage of the script, please refer to :doc:`using_setup_sh`.
+To learn more about the usage of the script, please refer to :doc:`using_setup_sh`.
 
 Running Minion
 ==============
@@ -102,14 +98,14 @@ Enter an email that has been registered as Persona email account. If you don't h
 please check out :doc:`persona` before proceeding.
 
 You don't have to provide a real name, but this is the name we use in formal information such as sending invitation
-to a friend to join Minion. Mozilla does not collect data from self-hosted Minion if you care about your privacy.
+to a friend to join Minion.
 
 You also don't need to import test sites. By test sites we mean security testing sites. These sites are developed
 and free to security testers for testing security tools. We encourage new users to import them when learning about
 Minion. You can always delete them later (or start from scratch when you deploy a production version).
 
 Explore the frontend
-=====================
+====================
 
 I have a separate page to guide you how to use the frontend. Please check :doc:`using_frontend`.
 
@@ -123,8 +119,6 @@ Moving from beginngers
 ======================
 
 * :doc:`configure_minion`
-
-* :doc:`inside_minion`
 
 * :doc:`developing_plugins`
 

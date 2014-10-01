@@ -1,19 +1,13 @@
 Inside Minion
 #############
 
-In this document, we will look at the internals of Minion. Many of the points
-below have been discussed previously at:
-
-* `Introducing Minion <https://blog.mozilla.org/security/2013/07/30/introducing-minion/>`_
-
-* `Writing Minion Plugins <https://blog.mozilla.org/security/2013/08/22/1392/>`_
-
-While the blog posts may be outdated, they are useful to look at.
+In this document, we will look at the internals of Minion.
 
 Minion's mission
 ================
 
-Minion is developed as an open source project by the Mozilla Security Assurance team.
+Minion is developed as an open source project by the Mozilla Security Assurance team and improved
+by Frédéric Guégan apprentice at Orange Digital Factory.
 The goal is to enable developers and security testers to bring web application security
 into a continuous testing cycle. To do this, both developers and testers are given an
 easy to use dashboard that lists all the sites they need to scan, detail scan summary page
@@ -57,7 +51,7 @@ we are using in Minion:
 
 * We use MongoDB as our data store.
 
-* By default, our version of Minion is using Persona for authentication.
+* Our version of Minion is using Persona or LDAP for authentication.
 
 
 This stack corresponds to the diagram shown below.
@@ -94,7 +88,7 @@ plugins. See :ref:`community_plugins_label`.
 Task Engine
 -----------
 
-Minion Backend and Minion Task Engine are synonym in this docuemtnation. 
+Minion Backend and Minion Task Engine are synonym in this documentation.
 The Task Engine provides the core functionality for managing users, 
 groups, sites, scans, and results within the Minion platform. 
 Acting as a central hub, the Task Engine maintains a register of 
@@ -143,8 +137,8 @@ is responsible for creating the ACL by wrapping API requests to the task
 engine in the front end's API. AngularJS makes calls to the front end's
 API endpoints. 
 
-This looks confusing and unncessary for newcomer, but the main advantage 
+This looks confusing and unnecessary for newcomer, but the main advantage
 is that we can re-engineer the front end in anyway we want with little 
 to zero impact to the task engine. For example, someone swap out the entire 
-front end and our Persona authentiation with their own front end implementation
+front end and our Persona authentication with their own front end implementation
 and authentication model (e.g. LDAP authentication).

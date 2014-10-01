@@ -6,13 +6,13 @@ Minion's frontend is separate from the backend repository. Here we show how the 
 Login
 =====
 
-Minion's frontend is authenticated using Persona. You can replace Persona if you want. The backend is authentication
+Minion's frontend is authenticated using Persona or LDAP (to switch between them look at :doc:`configure_minion`). The backend is authentication
 agonistic; it is the job of the frontend web service to verify that given user has permission to access a resource.
 We explain this in :doc:`inside_minion`. 
 
 .. image:: images/login.png
 
-If you are new to Persona, please check :doc:`persona` to find out how to make your email address into a Persona-capable
+If you want to use Persona and are new to Persona, please check :doc:`persona` to find out how to make your email address into a Persona-capable
 email address.
 
 Dashboard
